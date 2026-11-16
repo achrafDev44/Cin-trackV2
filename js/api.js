@@ -36,5 +36,13 @@ export async function updateContent(id,data) {
     });   
 }
 
+// permet de supprimer un film ou un serie de mockAPI
+export async function deleteContent(id) {
+    return await request(`contents/${id}`,{
+        method:"DELETE"
+    })
+    
+}
+
 
 
