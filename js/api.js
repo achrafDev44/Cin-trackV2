@@ -20,12 +20,21 @@ export async function request(path, option = {}) {
     }
     return response.json();
 }
-
+// permet ajouter un nouveau film ou serie dans mokApi
 export async function createContent(data) {
     return await request("/content" ,{
         method:"Post",
         body: JSON.stringify(data)
-    });
-    
+    });  
 }
+
+// permet de modifier un film ou un serie deja enregistrer dans mokApi
+export async function updateContent(id,data) {
+    return await request (`/contents/${id}`,{
+        method:"PUT",
+        body:JSON.stringify(data)
+    });   
+}
+
+
 
