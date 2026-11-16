@@ -1,8 +1,8 @@
-const API_URL = "https://raw.githubusercontent.com/ouchad97/cinetrack-api/main/cinetrack-data.json";
+const API_URL="https://6afaf07b730c1d152f32cb64.mockapi.io/api/v1";
 
 export async function chargerDonnees() {
     try{
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL+"/contents");
         if(!response.ok){
             throw new Error("erreur API");
         }
