@@ -21,4 +21,11 @@ export async function request(path, option = {}) {
     return response.json();
 }
 
+export async function createContent(data) {
+    return await request("/content" ,{
+        method:"Post",
+        body: JSON.stringify(data)
+    });
+    
+}
 
