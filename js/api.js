@@ -40,8 +40,12 @@ export async function updateContent(id,data) {
 export async function deleteContent(id) {
     return await request(`contents/${id}`,{
         method:"DELETE"
-    })
-    
+    })   
+}
+
+// permet de recuperer tous les commantaires
+export async function getComments() {
+    return await request("/comments"); 
 }
 
 
