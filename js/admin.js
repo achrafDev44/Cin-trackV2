@@ -14,8 +14,8 @@ function afficherContenus(contents){
                 <td>${content.type}</td>
                 <td>${content.releaseYear}</td>
                 <td>
-                    <button>Modifier</button>
-                    <button class="delete-btn" data-id="${content.id}">Supprimer</button>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg mr-2">Modifier</button>
+                    <button class="delete-btn bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg" data-id="${content.id}">Supprimer</button>
                 </td>
             </tr>`;
     }).join("")
