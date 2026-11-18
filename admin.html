@@ -26,6 +26,36 @@
 
         <h2 class="text-2xl font-bold mb-6">Liste des contenues</h2>
 
+        <input type="text" id="title" placeholder="Titre" class="w-full p-3 rounded bg-gray-700 text-white">
+        <p id="error-title" class="text-red-500 text-sm"></p>
+
+        <select id="type" class="w-full p-3 rounded bg-gray-700 text-white">
+            <option value="">Choisir le type</option>
+            <option value="">Film</option>
+            <option value="">Séries</option>
+        </select>
+        <p id="error-type" class="text-red-500 text-sm"></p>
+
+        <input type="number" id="releaseYear" placeholder="Année" class="w-full p-3 rounded bg-gray-700 text-white">
+        <p id="error-releaseYear" class="text-red-500 text-sm"></p>
+
+
+        <input type="url" id="image" placeholder="URL de l'image" class="w-full p-3 rounded bg-gray-700 text-white">
+        <p id="error-image" class="text-red-500 text-sm"></p>
+
+        <input type="number" id="duration" placeholder="Durée du film " class="w-full p-3 rounded bg-gray-700 text-white">
+        <p id="error-duration" class="text-red-500 text-sm"></p>
+
+        <input type="number" id="seasons" placeholder="Nombre de saisons" class="w-full p-3 rounded bg-gray-700 text-white">
+        <p id="error-seasons" class="text-red-500 text-sm"></p>
+
+        <input type="text" id="genres" placeholder="Action,Drama..." class="w-full p-3 rounded bg-gray-700 text-white">
+        <p id="error-genres" class="text-red-500 text-sm"></p>
+
+        <button id="submit-btn" type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+            Ajouter
+        </button>
+
         <div id="message" class="text-center text-gray-300 mb-4">chargement...        
         </div>
 
