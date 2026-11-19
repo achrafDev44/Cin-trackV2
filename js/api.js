@@ -22,7 +22,7 @@ export async function request(path, option = {}) {
 }
 // permet ajouter un nouveau film ou serie dans mokApi
 export async function createContent(data) {
-    return await request("/content" ,{
+    return await request("/contents" ,{
         method:"Post",
         body: JSON.stringify(data)
     });  

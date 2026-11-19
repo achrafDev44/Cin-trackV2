@@ -16,12 +16,21 @@ openModal.addEventListener("click",function(){
 closeModal.addEventListener("click",function(){
     modal.classList.add("hidden");
     modal.classList.remove("flex");
+    reinitialiserFormulaire();
 });
-
 
 let items=[];
 // savoir en train ajouter ou modifier ,stocke id
 let editingId=null;
+
+function reinitialiserFormulaire(){
+    // vider les champs
+    form.reset();
+    // revenir mode ajout
+    editingId=null;
+    document.getElementById("form-title").textContent="Ajouter un contenu";
+    document.getElementById("submit-btn").textContent="Ajouter"
+}
 
 function afficherContenus(contents){
     table.innerHTML=contents.map(content=>{
@@ -82,6 +91,9 @@ function activerModification(){
             // || undefined
             document.getElementById("form-title").textContent="Modifier un contenu";
             document.getElementById("submit-btn").textContent="Enregistrer";
+
+            modal.classList.remove("hidden")
+            modal.classList.add("flex")
         })    
     })
 }
@@ -89,8 +101,9 @@ function activerModification(){
 // recupere les donnees
 function getFormData(){
     const seasons=[]
-    for (let i=1;1<=Number(document.getElementById("seasons").value);i++){
-        seasons.push(i)
+    for (let i=1;i<=Number(document.getElementById("seasons").value);i++)
+    {
+        seasons.push(i);
     }
     const data={
         title:document.getElementById("title").value,
@@ -108,6 +121,7 @@ form.addEventListener("submit",async function(event){
     event.preventDefault()
     // recupere toute les donnees du formulaire
     const data=getFormData();
+    console.log("donnees envoyee :", data)
     if(editingId===null){
         await createContent(data);
         items=await chargerDonnees()
@@ -127,6 +141,11 @@ form.addEventListener("submit",async function(event){
     }
     // prochaine envoi considerer comme nouvell ajout
     editingId=null
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    reinitialiserFormulaire();
+
+
 })
 // charger les contenus depuis MockAPI
 async function initialiserAdmin() {
