@@ -1,31 +1,35 @@
-CinéTrack : Gestion des films et séries
+1 : CinéTrack
 
-1. Description
+CinéTrack est une application web de gestion et de consultation de films et de séries. Elle permet aux utilisateurs de découvrir des contenus et de consulter leurs informations. Elle dispose également d'un espace d'administration pour gérer les contenus et les commentaires.
 
-    CinéTrack est une application web de consultation et de gestion des films et séries. Elle permet aux utilisateurs de consulter les films et séries, de rechercher un titre, de filtrer les résultats par catégorie et de gérer une liste de films et séries favoris.
+2 : Fonctionnalités:
 
- 2. Objectifs du projet
+  2-1 : Espace utilisateur
 
-    - Afficher une liste de films et de séries.
-    - Rechercher un film ou une série par son titre.
-    - Filtrer les contenus par catégorie (films ou séries).
-    - Afficher les détails d'un film ou d'une série.
-    - Ajouter des films et séries aux favoris.
-    - Supprimer un élément de la liste des favoris.
-    - Afficher les favoris sur ordinateur et sur mobile.
-    - Adapter l'interface aux différentes tailles d'écran.
-    - Utiliser la pagination pour afficher les contenus.
+- Consulter le catalogue des films et des séries.
+- Afficher les informations des contenus.
+- Consulter et publier des commentaires.
+- Gérer les favoris et le pseudo avec localStorage.
 
- 3. Technologies utilisées
+   2-2 : Espace administration
 
-    - HTML
-    - Tailwind CSS
-    - JavaScript
-    - DOM
-    - Fetch API
-    - LocalStorage
-    - Git et GitHub
+- Afficher la liste des contenus.
+- Ajouter un film ou une série.
+- Modifier les informations d'un contenu.
+- Supprimer un contenu.
+- Consulter les détails d'un contenu.
+- Afficher et publier des commentaires.
+- Vérifier les champs des formulaires.
 
- 4. Développeur
+   2-3 : Technologies utilisées
 
-    Achraf Ghani
+- HTML5 : structure des pages.
+- Tailwind CSS: mise en page responsive.
+- JavaScript (ES6+) : logique et interactions.
+- Fetch API : communication avec l'API.
+- MockAPI : stockage et gestion des données.
+- localStorage : conservation des favoris et du pseudo.
+
+3 : Auteur
+
+Achraf Ghani

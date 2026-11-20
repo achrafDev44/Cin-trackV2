@@ -10,29 +10,30 @@
 </head>
 <body class="bg-gray-800 text-gray-100 min-h-screen flex flex-col">
     <header class="bg-gray-800 border-b border-gray-700 p-4">
-        <div class="flex items-center gap-3">
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3">
             <img src="image/logo2.png" alt="Logo CinéTrack" class="w-10 h-10 sm:w-12 sm:h-12"> 
 
             <h1 class="text-xl sm:text-2xl font-bold text-red-500">
                 Administration CinéTrack
             </h1>
             
-            <a href="index.html" class="ml-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">Retour au catalogue    
+            <a href="index.html" class="sm:ml-auto w-full sm:w-auto text-center bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">Retour au catalogue    
             </a>
         </div>    
     </header>
 
-    <main class="flex-1 p-4 sm:p-6">
+    <main class="flex-1 p-3 sm:p-6">
 
-        <h2 class="text-2xl font-bold mb-6">Liste des contenues</h2>
+        <h2 class="text-xl sm:text-2xl font-bold mb-6">Liste des contenues</h2>
 
-        <button id="open-modal" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg mb-6">
+        <button id="open-modal" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg mb-6">
             Ajouter un contenu
         </button>
 
         <div id="content-modal" class="hidden fixed inset-0 bg-black/60 items-center justify-center p-4 z-50">
             <!-- contenu du modal -->
-            <div class="bg-gray-800 p-6 rounded-lg w-full max-w-xl max-h-[90vh] overflow-y-auto">
+            <div class="bg-gray-800 p-4 sm:p-6 rounded-lg w-full max-w-xl max-h-[90vh] overflow-y-auto">
 
                 <div class="flex justify-between items-center mb-4">
                     <h2 id="form-title" class="text-xl font-bold">
@@ -67,24 +68,71 @@
 
                     <input type="text" id="genres" placeholder="Action,Drama..." class="w-full p-3 rounded bg-gray-700 text-white">
                     <p id="error-genres" class="text-red-500 text-sm"></p>
-                    <div class="flex gap-3"> 
-                        <button id="submit-btn" type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                    <div class="flex flex-col sm:flex-row gap-3"> 
+
+                        <button id="submit-btn" type="submit" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
                             Ajouter
                         </button>
 
-                        <button id="close-modal" type="button" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                        <button id="close-modal" type="button" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
                             Fermer
                         </button>
                     </div>
                 </form> 
             </div>
         </div>
+
+        <!-- modal pour afficher les details et les commentaires -->
+        <div id="details-modal" class="hidden fixed inset-0 bg-black/60 items-center justify-center p-4 z-50">
+            <div class="bg-gray-800 p-4 sm:p-6 rounded-lg w-full max-w-xl max-h-[90vh] overflow-y-auto">
+                <h2 id="details-title" class="text-xl font-bold mb-4">
+                        Détails du contenu
+                </h2>
+
+                <h3 class="text-lg font-bold mb-3">commentaires</h3>
+
+                <p id="comments-loading" class="text-gray-400">
+                    chargement des commentaires...
+                </p>
+
+                <!-- place pour afficher les commentaires -->
+                <div id="comments-list" class="space-y-3 mb-4"></div>
+
+                <form id="comment-form" class="space-y-3">
+                    
+                    <input type="text"
+                           id="comment-author"
+                           placeholder="Votre nom"
+                           class="w-full p-3 rounded bg-gray-700 text-white">
+                    <p id="error-comment-author" class="text-red-500 text-sm"></p>
+                    
+                    <textarea id="comment-text"
+                              placeholder="Ecrire un commentaire..."
+                              class="w-full p-3 rounded bg-gray-700 text-white">
+                    </textarea>          
+                    <p id="error-comment-text" class="text-red-500 text-sm"></p> 
+                    <div class="flex flex-col sm:flex-row gap-3">
+
+                        <button type="submit" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                            Publier
+                        </button>
+
+                     <!-- pour fermer modal  -->
+                        <button id="close-details-modal" type="button"  class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                            Fermer
+                        </button>
+                    </div>
+                </form>
+
+               
+            </div>
+        </div> 
     
         <div id="message" class="text-center text-gray-300 mb-4">chargement...        
         </div>
 
         <div class="overflow-x-auto bg-gray-800 rounded-xl border border-gray-700">        
-            <table class="w-full text-left text-gray-100">
+            <table class="w-full min-w-[600px] text-left text-gray-100">
                 <thead class="bg-gray-700 text-red-400">
                     <tr>
                         <th class="p-4">Image</th>
@@ -98,7 +146,7 @@
                 <tbody id="contents-table">
 
                 </tbody>
-                </table>
+            </table>
         </div>
     </main>
     
