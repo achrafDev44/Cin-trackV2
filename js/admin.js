@@ -26,6 +26,10 @@ let editingId=null;
 function reinitialiserFormulaire(){
     // vider les champs
     form.reset();
+    // effacer toute les messages erreur
+    document.querySelectorAll('[id^="error-"]').forEach(error=>{
+        error.textContent="";
+    })
     // revenir mode ajout
     editingId=null;
     document.getElementById("form-title").textContent="Ajouter un contenu";
@@ -97,6 +101,78 @@ function activerModification(){
         })    
     })
 }
+// valider les champs du formulaire
+function validerFormulaire(){
+    let valide=true;
+
+    const title=document.getElementById("title").value.trim();
+    const type=document.getElementById("type").value;
+    const releaseYear=Number(document.getElementById("releaseYear").value);
+    const image=document.getElementById("image").value.trim();
+    const duration=Number(document.getElementById("duration").value)
+     const seasons=Number(document.getElementById("seasons").value)
+
+    // récupérer l'année actuelle
+    const anneeActuelle=new Date().getFullYear();
+
+    // vérifier le titre
+    if(title===""){
+        document.getElementById("error-title").textContent="Le titre est obligatoire.";
+        valide=false;
+    }else{
+        document.getElementById("error-title").textContent="";
+    }
+
+    // vérifier le type
+    if(type===""){
+        document.getElementById("error-type").textContent="Le type est obligatoire.";
+        valide=false;
+    }else{
+        document.getElementById("error-type").textContent="";
+    }
+
+    // vérifier l'année
+    if(!releaseYear || releaseYear<1900 || releaseYear>anneeActuelle){
+        document.getElementById("error-releaseYear").textContent="L'année doit être comprise entre 1900 et "+anneeActuelle+ ".";
+        valide=false;
+    }else{
+        document.getElementById("error-releaseYear").textContent="";
+    }
+
+    // vérifier l'URL
+    try{
+        const url=new URL(image);
+
+        if(url.protocol!=="http:" && url.protocol!=="https:"){
+            throw new Error("URL invalide");
+        }
+        document.getElementById("error-image").textContent="";
+    }catch(error){
+        document.getElementById("error-image").textContent="Une URL valide est obligatoire.";
+        valide=false;
+    }
+    // vérifier la durée
+    if(type==="movie"){
+        if(!duration || duration <= 0){
+            document.getElementById("error-duration").textContent="La durée du film obligatoire";
+            valide=false
+        }else{
+            document.getElementById("error-duration").textContent="";
+        }
+        // effacer erreur des saisons
+        document.getElementById("error-seasons").textContent="";
+    }
+    // vérifier nombre saisons
+    if(type==="series"){
+        if(!seasons || seasons <=0){
+            document.getElementById("error-seasons").textContent="Le nombre de saisons est obligatoire."
+            valide=false;
+        }else{
+            document.getElementById("error-seasons").textContent="";
+        }
+    }
+     return valide
+}
 
 // recupere les donnees
 function getFormData(){
@@ -119,6 +195,10 @@ function getFormData(){
 
 form.addEventListener("submit",async function(event){
     event.preventDefault()
+    // vérifier les champs avant envoyer les donnes
+    if (!validerFormulaire()) {
+        return
+    }
     // recupere toute les donnees du formulaire
     const data=getFormData();
     console.log("donnees envoyee :", data)
