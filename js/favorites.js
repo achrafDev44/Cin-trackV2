@@ -11,6 +11,7 @@ export function addFavorite(item){
 }
 export function renderFavorites(){
     const favs=getFavorites();
+    favs.sort((a, b)=>a.title.localeCompare(b.title))
     const favoriteList=document.getElementById("favorites-list");
     const mobileFavoriteList=document.getElementById("mobile-favorites-list")
     const html=favs.map(film=>{
